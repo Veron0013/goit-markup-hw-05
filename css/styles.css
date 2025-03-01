@@ -525,9 +525,6 @@ button {
 	background: rgba(46, 47, 66, 0.4);
 	transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 	transition-property: visibility, opacity;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	visibility: hidden;
 	opacity: 0;
 	pointer-events: none;
@@ -535,10 +532,10 @@ button {
 
 .modal {
 	position: absolute;
-	/*top: 50%;
+	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -50%);*/
-	padding: 24px;
+	transform: translate(-50%, -50%);
+	padding: 72px 24px 24px 24px;
 	border-radius: 4px;
 	width: 408px;
 	min-height: 584px;
@@ -559,17 +556,22 @@ button {
 
 .close-btn {
 	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	right: 24px;
 	top: 24px;
-	border-radius: 50px;
+	border-radius: 50%;
 	width: 24px;
 	height: 24px;
 	background-color: #e7e9fc;
-	border: none;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .close-btn-icon {
 	fill: black;
+	transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .close-btn:hover,
@@ -580,11 +582,10 @@ button {
 
 .close-btn:hover .close-btn-icon,
 .close-btn:focus .close-btn-icon {
-	fill: #f4f4fd;
+	fill: #ffff;
 }
 
 .modal-text {
-	margin-top: 48px;
 	margin-bottom: 16px;
 	font-weight: 500;
 	font-size: 16px;
@@ -603,13 +604,13 @@ button {
 }
 
 .modal-form-label {
-	display: inline-block;
+	display: block;
 	font-weight: 400;
 	font-size: 12px;
 	line-height: 1.17;
 	letter-spacing: 0.04em;
 	color: #8e8f99;
-	margin-bottom: 8px;
+	margin-bottom: 4px;
 }
 
 .modal-form-input-cont {
@@ -621,9 +622,11 @@ button {
 	border-radius: 4px;
 	width: 360px;
 	height: 40px;
-	transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 	padding: 11px;
 	padding-left: 38px;
+	background-color: transparent;
+	outline: transparent;
+	transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-form-input:hover,
@@ -634,11 +637,12 @@ button {
 
 .modal-form-icon {
 	position: absolute;
-	top: 0;
-	left: 0;
-	transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-	margin-left: 16px;
-	margin-top: 8px;
+	top: 50%;
+	left: 16px;
+	transform: translateY(-50%);
+	transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+	/*margin-left: 16px;
+	margin-top: 8px;*/
 }
 
 .modal-form-input:hover+.modal-form-icon,
@@ -655,6 +659,9 @@ button {
 }
 
 .user-coment {
+	background-color: transparent;
+	outline: transparent;
+	resize: none;
 	border: 1px solid rgba(46, 47, 66, 0.4);
 	border-radius: 4px;
 	width: 360px;
@@ -665,6 +672,12 @@ button {
 	letter-spacing: 0.04em;
 	color: rgba(46, 47, 66, 0.4);
 	padding: 8px 16px;
+	transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.user-coment:hover,
+.user-coment:focus {
+	border-color: #4D5AE5;
 }
 
 .modal-form-con-chekbox {
@@ -677,6 +690,7 @@ button {
 .checkbox:checked+.label-checkbox .custom-checkbox {
 	background-color: #404bbf;
 	fill: #f4f4fd;
+	border: none;
 }
 
 .visually-hidden {}
@@ -695,31 +709,21 @@ button {
 	border: 1px solid rgba(46, 47, 66, 0.4);
 	width: 16px;
 	height: 16px;
-	/*display: block;
-	position: absolute;*/
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
-	transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+	transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1), fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 	fill: transparent;
 	margin-right: 8px;
-}
-
-.button-con {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 0;
-	margin: 0;
 }
 
 .send-btn {
 	border-radius: 4px;
 	padding: 16px 32px;
-	width: 169px;
+	min-width: 169px;
 	height: 56px;
 	box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
-	background: #4d5ae5;
+	background-color: #4d5ae5;
 	font-weight: 500;
 	font-size: 16px;
 	line-height: 1.5;
@@ -727,9 +731,13 @@ button {
 	text-align: center;
 	color: #fff;
 	border: none;
+	display: block;
+	margin: 0 auto;
+	cursor: pointer;
+	transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.label-checkbox a {
+.user-privacy-link {
 	line-height: 1.33;
 	text-decoration: underline;
 	text-decoration-skip-ink: none;
